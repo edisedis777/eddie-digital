@@ -3,32 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Eddie's Digital Space</title>
-    <!-- Updated Title -->
+    <meta
+      name="description"
+      content="Eddie's personal digital space showcasing software projects, experiments, and curated resources." />
+    <title>Eddie's Digital Space | Home</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
-    <style>
-      .welcome-section h2 {
-        margin-bottom: 1rem;
-      }
-      .section-description {
-        margin-bottom: 1.5rem;
-      }
-      .section-description h3 {
-        margin-bottom: 0.5rem;
-        font-size: 1.3rem;
-        color: var(--primary-color);
-      }
-      .navigation-guide {
-        margin-top: 2rem;
-        font-style: italic;
-        color: #555;
-      }
-    </style>
+    <link rel="icon" type="image/png" href="eddie.png" />
   </head>
   <body>
+    <!-- Skip Navigation for Accessibility -->
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
     <!-- Mobile Menu Toggle -->
     <button class="menu-toggle" aria-label="Toggle menu">
       <svg
@@ -57,10 +45,14 @@
 
     <!-- Side Panel -->
     <aside class="side-panel">
-      <h1>Eddie</h1>
-      <nav>
+      <h1>
+        <a href="index.html" style="color: inherit; text-decoration: none"
+          >Eddie</a
+        >
+      </h1>
+      <nav aria-label="Main Navigation">
         <ul>
-          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html" class="active">Home</a></li>
           <li><a href="projects.html">Projects</a></li>
           <li><a href="experiments.html">Experiments</a></li>
           <li><a href="curated_links.html">Curated Links</a></li>
@@ -70,18 +62,17 @@
     </aside>
 
     <!-- Main Content -->
-    <main>
+    <main id="main-content">
       <!-- Welcome Section -->
       <section class="section-title">
         <a href="index.html" class="home-icon-link" aria-label="Back to Home">
-          <img src="eddie.png" alt="Home" class="home-icon" />
+          <img src="eddie.png" alt="Eddie's profile" class="home-icon" />
         </a>
         <h2>Welcome!</h2>
       </section>
 
       <section class="content" style="border-bottom: none">
         <p style="font-size: 1.1rem; margin-bottom: 2rem">
-          <!-- Larger intro text -->
           Hi, I'm Eddie. This is my personal digital space where I share things
           I'm working on, learning about, and finding interesting. Think of it
           as a blend of a portfolio, notebook, and personal knowledge base.
@@ -95,11 +86,7 @@
 
         <div class="section-description">
           <h3>
-            <a
-              href="projects.html"
-              style="color: var(--accent-color); text-decoration: none"
-              >Projects</a
-            >
+            <a href="projects.html">Projects</a>
           </h3>
           <p>
             Explore my software development and data engineering work. You'll
@@ -110,11 +97,7 @@
 
         <div class="section-description">
           <h3>
-            <a
-              href="experiments.html"
-              style="color: var(--accent-color); text-decoration: none"
-              >Experiments</a
-            >
+            <a href="experiments.html">Experiments</a>
           </h3>
           <p>
             Beyond code, I enjoy hands-on experimentation. This section
@@ -124,11 +107,7 @@
 
         <div class="section-description">
           <h3>
-            <a
-              href="curated_links.html"
-              style="color: var(--accent-color); text-decoration: none"
-              >Curated Links</a
-            >
+            <a href="curated_links.html">Curated Links</a>
           </h3>
           <p>
             A collection of useful tools, insightful articles, tutorials, and
@@ -138,11 +117,7 @@
 
         <div class="section-description">
           <h3>
-            <a
-              href="contact.html"
-              style="color: var(--accent-color); text-decoration: none"
-              >Contact</a
-            >
+            <a href="contact.html">Contact</a>
           </h3>
           <p>
             Want to get in touch? Find my social links and email address here.
@@ -155,6 +130,17 @@
           mobile) to explore the different sections.
         </p>
       </section>
+
+      <!-- Footer -->
+      <footer>
+        <p>
+          &copy;
+          <script>
+            document.write(new Date().getFullYear());
+          </script>
+          Eddie. All rights reserved.
+        </p>
+      </footer>
     </main>
 
     <script>
@@ -164,6 +150,21 @@
         .addEventListener("click", function () {
           document.querySelector(".side-panel").classList.toggle("active");
         });
+
+      // Close mobile menu when clicking outside
+      document.addEventListener("click", function (event) {
+        const sidePanel = document.querySelector(".side-panel");
+        const menuToggle = document.querySelector(".menu-toggle");
+
+        if (
+          window.innerWidth <= 768 &&
+          !sidePanel.contains(event.target) &&
+          !menuToggle.contains(event.target) &&
+          sidePanel.classList.contains("active")
+        ) {
+          sidePanel.classList.remove("active");
+        }
+      });
     </script>
   </body>
 </html>
