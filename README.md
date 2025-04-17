@@ -1,6 +1,11 @@
 # Eddie-Digital
 This repository contains the source code for my personal website – a digital space where I share projects, experiments, curated links, and thoughts.
 
+![Screenshot](https://github.com/user-attachments/assets/fadc8a5b-2365-4bbb-9e2c-fffb397fb383)
+
+
+
+
 ## Live Demo
 You can view the live website here: [https://edisedis777.github.io/eddie-digital/](https://edisedis777.github.io/eddie-digital/)
 
