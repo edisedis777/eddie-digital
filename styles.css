@@ -8,11 +8,20 @@
 :root {
   --primary-color: #212529;
   --background-color: #c8c8c8;
-  --accent-color: #000000; /* Updated Accessible Dark Blue */
+  --accent-color: #000000; /* Accessible Dark Blue */
   --text-color: #333;
   --hover-color: #4caf50; /* Green hover background */
+  --light-hover-color: rgba(
+    76,
+    175,
+    80,
+    0.1
+  ); /* Light green hover for subtle effects */
   --sidebar-width: 250px;
   --transition-speed: 0.3s;
+  --divider-color: rgba(0, 0, 0, 0.08);
+  --card-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  --focus-outline: 2px solid #4caf50;
 }
 
 body {
@@ -22,6 +31,22 @@ body {
   line-height: 1.6;
   display: flex;
   min-height: 100vh;
+  flex-direction: column;
+}
+
+/* Accessibility Improvements */
+:focus {
+  outline: var(--focus-outline);
+  outline-offset: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: 2px;
 }
 
 /* Side Panel */
@@ -33,11 +58,29 @@ body {
   height: 100%;
   background-color: var(--background-color);
   padding: 2rem 1.5rem;
-  transition: transform var(--transition-speed) ease;
+  transition: transform var(--transition-speed) ease,
+    box-shadow var(--transition-speed) ease;
   z-index: 1000;
+  box-shadow: 1px 0 5px rgba(0, 0, 0, 0.05);
 }
 
-/* Removed standalone .side-panel h1 rule as styles moved to .site-title-link h1 */
+.side-panel h1 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--primary-color);
+  position: relative;
+}
+
+.side-panel h1::after {
+  content: "";
+  position: absolute;
+  bottom: -0.5rem;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background-color: var(--hover-color);
+  border-radius: 3px;
+}
 
 .side-panel nav ul {
   list-style: none;
@@ -57,12 +100,37 @@ body {
   border-radius: 10px;
   border-style: solid;
   transition: all var(--transition-speed) ease;
+  position: relative;
+  overflow: hidden;
 }
 
-.side-panel ul li a:hover {
-  background-color: var(--hover-color); /* Green Background */
-  color: white; /* White text for contrast - WCAG AA Pass */
+.side-panel ul li a::before {
+  content: "";
+  position: absolute;
+  left: -100%;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--light-hover-color);
+  transition: transform var(--transition-speed) ease;
+  z-index: -1;
+}
+
+.side-panel ul li a:hover::before {
+  transform: translateX(100%);
+}
+
+.side-panel ul li a:hover,
+.side-panel ul li a.active {
+  background-color: var(--hover-color);
+  color: white;
   transform: translateX(5px);
+  box-shadow: var(--card-shadow);
+}
+
+.side-panel ul li a:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.5);
 }
 
 /* Main Content Area */
@@ -70,61 +138,117 @@ main {
   margin-left: var(--sidebar-width);
   width: calc(100% - var(--sidebar-width));
   padding: 2rem;
-  max-width: 1200px; /* Max width for main content container */
+  max-width: 1200px;
+  min-height: 100vh;
+  position: relative;
 }
 
-/* Section Title Styles (Used for main page title and category headers) */
-/* Modified to handle header icon */
+/* Section Title Styles */
 .section-title {
-  display: flex; /* Make it a flex container */
-  align-items: center; /* Vertically align icon and title */
-  gap: 0.75rem; /* Space between icon and title */
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
   padding: 1rem 0;
-  max-width: 800px; /* Max width for title/content blocks */
-  margin: 0 auto; /* Center title/content blocks */
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Animation for section titles */
+.section-title h2,
+.section-title h3 {
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.section-title h2::after,
+.section-title h3::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--hover-color);
+  transition: width 0.3s ease;
+}
+
+.section-title:hover h2::after,
+.section-title:hover h3::after {
+  width: 100%;
 }
 
 /* Page Header Home Icon Link */
 .home-icon-link {
   display: inline-block;
   flex-shrink: 0;
-  line-height: 0; /* Helps prevent extra space around the image */
+  line-height: 0;
+  transition: transform 0.2s ease;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.home-icon-link:hover {
+  transform: scale(1.1);
+}
+
+.home-icon-link:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.5);
 }
 
 /* Page Header Home Icon Image */
 .home-icon {
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   object-fit: cover;
   display: block;
+  border: 2px solid var(--hover-color);
+  transition: all 0.2s ease;
+}
+
+.home-icon:hover {
+  border-color: var(--primary-color);
 }
 
 /* Main Page Title Heading (H2) */
 .section-title h2 {
-  margin: 0; /* Reset margin for flex alignment */
+  margin: 0;
   font-size: 2rem;
   font-weight: 700;
   color: var(--primary-color);
 }
 
-/* --- Category Title Sections (e.g., on Projects, Curated Links pages) --- */
+/* --- Category Title Sections --- */
 .category-title {
-  /* Reset flex display if applied via .section-title, if needed */
   display: block;
-  /* Add spacing specific to category titles */
   margin-top: 2.5rem;
-  margin-bottom: 0;
+  margin-bottom: 0.5rem;
   padding-bottom: 0;
+  position: relative;
+}
+
+.category-title::before {
+  content: "";
+  position: absolute;
+  left: -15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 25px;
+  background-color: var(--hover-color);
+  border-radius: 3px;
 }
 
 /* Category Title Heading (H3) */
 .category-title h3 {
-  /* Ensure consistent spacing and style */
   margin-bottom: 0.5rem;
   font-size: 1.75rem;
   font-weight: 600;
   color: var(--primary-color);
+  position: relative;
+  display: inline-block;
 }
 
 /* Section Divider */
@@ -132,31 +256,49 @@ main {
   max-width: 800px;
   margin: 2rem auto;
   border: 0;
-  height: 1px; /* Thinner divider */
-  background-color: rgba(0, 0, 0, 0.15);
+  height: 1px;
+  background-color: var(--divider-color);
+  position: relative;
 }
 
-/* General Content Sections (Used on Index page originally) */
+.section-divider::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 3px;
+  background-color: var(--hover-color);
+  border-radius: 3px;
+}
+
+/* General Content Sections */
 .content {
-  /* Removed padding: 2.5rem 0; as individual lists/sections handle spacing */
   max-width: 800px;
   margin: 0 auto;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  padding-bottom: 1.5rem; /* Add padding below content block */
-  margin-bottom: 1.5rem; /* Add margin below content block */
+  border-bottom: 1px solid var(--divider-color);
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease;
 }
+
+.content:hover {
+  transform: translateY(-2px);
+}
+
 .content:last-child {
   border-bottom: none;
   margin-bottom: 0;
 }
 
-/* Keep these for potential future use or simple content sections */
 .content h3 {
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 1rem;
   color: var(--primary-color);
 }
+
 .content p {
   font-size: 1rem;
   line-height: 1.7;
@@ -167,50 +309,121 @@ main {
 .welcome-section h2 {
   margin-bottom: 1.5rem;
 }
+
 .section-description {
   margin-bottom: 1.5rem;
+  transition: transform 0.3s ease;
+  padding: 0.5rem;
+  border-radius: 5px;
 }
+
+.section-description:hover {
+  transform: translateX(5px);
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
 .section-description h3 {
   margin-bottom: 0.5rem;
   font-size: 1.3rem;
   color: var(--primary-color);
+  position: relative;
+  display: inline-block;
 }
+
+.section-description h3::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--hover-color);
+  transition: width 0.3s ease;
+}
+
+.section-description:hover h3::after {
+  width: 100%;
+}
+
 .section-description h3 a {
-  /* Style the linked H3s */
   color: var(--accent-color);
   text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease;
 }
+
 .section-description h3 a:hover {
-  text-decoration: underline;
+  color: var(--hover-color);
+  text-decoration: none;
 }
+
+.section-description h3 a::after {
+  content: "→";
+  position: absolute;
+  right: -20px;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.section-description h3 a:hover::after {
+  opacity: 1;
+  transform: translateX(5px);
+}
+
 .navigation-guide {
   margin-top: 2rem;
   font-style: italic;
   color: #555;
+  padding: 1rem;
+  background-color: rgba(76, 175, 80, 0.05);
+  border-radius: 5px;
+  border-left: 3px solid var(--hover-color);
 }
 
 /* --- Projects Page List Styles --- */
 .project-list {
-  list-style: decimal; /* Use numbers */
+  list-style: decimal;
   padding-left: 1.5rem;
   margin-top: 1rem;
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
+  counter-reset: project-counter;
 }
+
 .project-list li {
   margin-bottom: 1.5rem;
   line-height: 1.7;
+  padding: 0.75rem 1rem;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  position: relative;
 }
+
+.project-list li::before {
+  color: var(--hover-color);
+  font-weight: bold;
+}
+
+.project-list li:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+  transform: translateX(5px);
+  box-shadow: var(--card-shadow);
+}
+
 .project-list li a.project-title-link {
   font-weight: 600;
-  color: inherit;
+  color: var(--accent-color);
   text-decoration: none;
+  transition: color 0.3s ease;
 }
+
 .project-list li a.project-title-link:hover {
+  color: var(--hover-color);
   text-decoration: underline;
 }
-/* Style for the inline Live Demo link (also used in projects) */
+
+/* Style for the inline Live Demo link */
 .live-demo-link {
   text-decoration: none;
   display: inline-flex;
@@ -219,10 +432,19 @@ main {
   color: var(--accent-color);
   font-size: 0.95rem;
   vertical-align: middle;
+  margin-left: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
 }
+
 .live-demo-link:hover {
-  text-decoration: underline;
+  background-color: var(--hover-color);
+  color: white;
+  text-decoration: none;
+  transform: translateY(-2px);
 }
+
 .live-demo-link svg {
   width: 1em;
   height: 1em;
@@ -231,6 +453,11 @@ main {
   stroke-linecap: round;
   stroke-linejoin: round;
   fill: none;
+  transition: transform 0.3s ease;
+}
+
+.live-demo-link:hover svg {
+  transform: rotate(15deg);
 }
 
 /* --- Experiments Page List Styles --- */
@@ -242,83 +469,287 @@ main {
   margin-left: auto;
   margin-right: auto;
 }
+
 .experiment-list li {
   margin-bottom: 2.5rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--divider-color);
   line-height: 1.7;
+  transition: all 0.3s ease;
+  border-radius: 8px;
 }
+
+.experiment-list li:hover {
+  box-shadow: var(--card-shadow);
+  background-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-3px);
+}
+
 .experiment-list li:last-child {
   border-bottom: none;
   margin-bottom: 0;
 }
+
 .experiment-list li .experiment-title {
   font-weight: 600;
   font-size: 1.25rem;
   color: var(--primary-color);
   margin-bottom: 0.5rem;
   display: block;
+  position: relative;
+  padding-left: 1rem;
 }
+
+.experiment-list li .experiment-title::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--hover-color);
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
 .experiment-list li .experiment-description {
   margin-bottom: 1rem;
 }
+
 .experiment-images {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
   margin-top: 1rem;
 }
+
 .experiment-images img {
   width: 120px;
   height: 120px;
   object-fit: cover;
-  border-radius: 6px;
-  background-color: #e0e0e0; /* Placeholder background */
+  border-radius: 8px;
+  background-color: #e0e0e0;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.experiment-images img:hover {
+  transform: scale(1.05);
+  border-color: var(--hover-color);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 /* --- Curated Links Page List Styles --- */
 .curated-list {
-  list-style: disc; /* Use standard bullets */
-  padding-left: 1.5rem; /* Indent list */
+  list-style: none;
+  padding-left: 0;
   margin-top: 1rem;
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
 }
+
 .curated-list li {
   margin-bottom: 1.25rem;
   line-height: 1.7;
   color: var(--text-color);
+  padding: 0.75rem 1rem 0.75rem 2rem;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  position: relative;
 }
+
+.curated-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0.75rem;
+  color: var(--hover-color);
+  font-size: 1.25rem;
+}
+
+.curated-list li:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+  transform: translateX(5px);
+  box-shadow: var(--card-shadow);
+}
+
 .curated-list li a.curated-link-title {
   font-weight: 600;
   color: var(--accent-color);
   text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
 }
+
 .curated-list li a.curated-link-title:hover {
-  text-decoration: underline;
+  color: var(--hover-color);
+}
+
+.curated-list li a.curated-link-title::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--hover-color);
+  transition: width 0.3s ease;
+}
+
+.curated-list li a.curated-link-title:hover::after {
+  width: 100%;
+}
+
+/* --- Footer Styles --- */
+footer {
+  max-width: 800px;
+  margin: 3rem auto 1rem;
+  padding: 1.5rem 0 1rem;
+  border-top: 1px solid var(--divider-color);
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+  position: relative;
+}
+
+footer::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background-color: var(--hover-color);
+  border-radius: 3px;
+}
+
+footer p {
+  transition: transform 0.3s ease;
+}
+
+footer:hover p {
+  transform: translateY(-2px);
+}
+
+/* --- Contact Page Styles --- */
+.contact-list {
+  list-style: none;
+  padding: 1.5rem 0;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-list li {
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.contact-list li:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+  transform: translateX(5px);
+  box-shadow: var(--card-shadow);
+}
+
+.contact-list li svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+  color: var(--hover-color);
+  transition: transform 0.3s ease;
+}
+
+.contact-list li:hover svg {
+  transform: scale(1.2);
+}
+
+.contact-list li a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  position: relative;
+  padding-bottom: 2px;
+}
+
+.contact-list li a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--hover-color);
+  transition: width 0.3s ease;
+}
+
+.contact-list li a:hover {
+  color: var(--hover-color);
+}
+
+.contact-list li a:hover::after {
+  width: 100%;
 }
 
 /* --- Mobile Menu Toggle --- */
 .menu-toggle {
-  display: none; /* Hidden by default */
+  display: none;
   position: fixed;
   top: 1rem;
   right: 1rem;
-  z-index: 1001; /* Above sidebar */
+  z-index: 1001;
   background-color: var(--primary-color);
   color: white;
   border: none;
   border-radius: 4px;
   padding: 0.5rem;
   cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.menu-toggle:hover {
+  background-color: var(--hover-color);
+  transform: scale(1.05);
+}
+
+.menu-toggle:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.5);
+}
+
+/* --- Skip Navigation for Accessibility --- */
+.skip-to-main {
+  position: absolute;
+  left: -9999px;
+  z-index: 9999;
+  padding: 1rem;
+  background-color: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  border-radius: 0 0 5px 0;
+  transition: background-color 0.3s ease;
+  font-weight: 500;
+}
+
+.skip-to-main:focus {
+  left: 0;
+  top: 0;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.5);
+}
+
+.skip-to-main:hover {
+  background-color: var(--hover-color);
 }
 
 /* --- Media Queries --- */
 @media (max-width: 1024px) {
   :root {
-    --sidebar-width: 220px; /* Slightly smaller sidebar */
+    --sidebar-width: 220px;
   }
+
   main {
     width: calc(100% - var(--sidebar-width));
   }
@@ -326,71 +757,233 @@ main {
 
 @media (max-width: 768px) {
   body {
-    flex-direction: column; /* Stack elements */
+    flex-direction: column;
   }
 
   .menu-toggle {
-    display: block; /* Show toggle button */
+    display: block;
   }
 
   .side-panel {
-    transform: translateX(-100%); /* Hide sidebar off-screen */
-    width: 280px; /* Consistent width for mobile menu */
+    transform: translateX(-100%);
+    width: 280px;
+    box-shadow: none;
   }
 
   .side-panel.active {
-    transform: translateX(0); /* Slide sidebar in */
+    transform: translateX(0);
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
   }
 
   main {
-    margin-left: 0; /* Main content takes full width */
+    margin-left: 0;
     width: 100%;
-    padding: 1rem; /* Reduce padding */
+    padding: 1rem;
   }
 
-  /* Adjust content widths for smaller screens if needed */
   .section-title,
   .content,
   .project-list,
   .experiment-list,
   .curated-list {
-    max-width: 100%; /* Allow content to use more width */
-    padding-left: 0.5rem; /* Adjust list padding */
+    max-width: 100%;
+    padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
-  /* Adjust list indentation on mobile */
+
   .project-list,
   .curated-list {
-    padding-left: 1.75rem; /* Ensure bullet/number is visible */
+    padding-left: 1.75rem;
   }
+
   .experiment-list {
-    padding-left: 0.5rem; /* No bullets to worry about */
+    padding-left: 0.5rem;
+  }
+
+  /* Ensure mobile menu closes when clicking a link */
+  .side-panel.active a {
+    position: relative;
+    z-index: 1002;
+  }
+
+  /* Improve mobile menu toggle visibility */
+  .menu-toggle {
+    padding: 0.6rem;
+    border-radius: 50%;
+    background-color: var(--hover-color);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Add backdrop for menu when open */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  body.menu-open::before {
+    opacity: 1;
+    visibility: visible;
   }
 }
 
 @media (max-width: 480px) {
-  /* Further adjustments for very small screens */
   .section-title h2 {
     font-size: 1.5rem;
   }
+
   .category-title h3 {
     font-size: 1.3rem;
   }
+
   .content h3 {
-    /* Keep for potential use */
     font-size: 1.25rem;
   }
+
   .content p,
   .project-list li,
   .experiment-list li,
   .curated-list li {
-    font-size: 0.95rem; /* Slightly smaller text */
+    font-size: 0.95rem;
   }
+
   .experiment-images img {
-    width: 90px; /* Smaller images */
+    width: 90px;
     height: 90px;
   }
+
   main {
-    padding: 1rem 0.75rem; /* More horizontal padding adjustment */
+    padding: 1rem 0.75rem;
+  }
+
+  /* Make touch targets larger on small screens */
+  .side-panel ul li a {
+    padding: 0.9rem 1rem;
+  }
+
+  .live-demo-link {
+    padding: 0.4rem 0.6rem;
+  }
+}
+
+/* Smooth scrolling for all browsers */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Print styles for better printing */
+@media print {
+  .side-panel,
+  .menu-toggle,
+  .skip-to-main {
+    display: none;
+  }
+
+  main {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  body {
+    background-color: white;
+    color: black;
+  }
+
+  a {
+    color: black;
+    text-decoration: underline;
+  }
+
+  .section-divider::before {
+    display: none;
+  }
+}
+
+/* CSS to fix any modal display issues */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1050;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  transform: scale(0.8);
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+}
+
+.modal-overlay.active .modal-content {
+  transform: scale(1);
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #666;
+  transition: color 0.3s ease;
+}
+
+.modal-close:hover {
+  color: var(--hover-color);
+}
+
+/* Loading state styles for async operations */
+.loading {
+  position: relative;
+  pointer-events: none;
+}
+
+.loading::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+/* Fix for any iOS specific issues */
+@supports (-webkit-touch-callout: none) {
+  .side-panel {
+    padding-bottom: 120px; /* Extra padding to account for iOS bottom bar */
   }
 }
