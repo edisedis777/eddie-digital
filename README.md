@@ -15,9 +15,9 @@ The website is organized into the following sections, accessible via the side na
 
 ## Technologies Used
 *   HTML5
-*   CSS3 (with CSS Variables)
+*   CSS3
 *   Google Fonts (Inter)
-*   Minimal JavaScript (for mobile menu toggle)
+*   Minimal JavaScript
 
 ## Local Development
 
