@@ -3,59 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Curated Links</title>
+    <title>Curated Links | Eddie's Portfolio</title>
+    <meta
+      name="description"
+      content="A collection of valuable resources, tutorials, tools, and articles curated by Eddie." />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
-    <!-- Specific styles for curated links list -->
-    <style>
-      .category-title {
-        margin-top: 2.5rem;
-        margin-bottom: 0;
-        padding-bottom: 0;
-      }
-      .category-title h3 {
-        font-size: 1.75rem;
-        font-weight: 600;
-        color: var(--primary-color);
-        margin-bottom: 0.5rem;
-      }
-
-      /* Style for the unordered list */
-      .curated-list {
-        list-style: disc; /* Use standard bullets */
-        padding-left: 1.5rem; /* Indent list */
-        margin-top: 1rem;
-        max-width: 800px; /* Match content width */
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      /* Style for each list item */
-      .curated-list li {
-        margin-bottom: 1.25rem; /* Space between links */
-        line-height: 1.7; /* Improve readability */
-        color: var(--text-color); /* Default text color for description */
-      }
-
-      /* Style for the link title (inline) */
-      .curated-list li a.curated-link-title {
-        font-weight: 600;
-        /* font-size: 1rem; /* Use standard text size */
-        color: var(--accent-color); /* Use accent color for the link */
-        text-decoration: none;
-        /* display: inline; /* Default, but explicit */
-        /* margin-bottom: 0; Removed */
-      }
-      .curated-list li a.curated-link-title:hover {
-        text-decoration: underline; /* Underline on hover */
-      }
-    </style>
   </head>
   <body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
     <!-- Mobile Menu Toggle -->
-    <button class="menu-toggle" aria-label="Toggle menu">
+    <button
+      class="menu-toggle"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+      aria-controls="side-panel">
       <svg
         width="24"
         height="24"
@@ -81,32 +47,40 @@
     </button>
 
     <!-- Side Panel -->
-    <aside class="side-panel">
+    <aside class="side-panel" id="side-panel">
       <h1>
-        <a href="index.html" style="color: inherit; text-decoration: none"
+        <a
+          href="index.html"
+          style="color: inherit; text-decoration: none"
+          aria-label="Eddie's Homepage"
           >Eddie</a
         >
       </h1>
-      <nav>
+      <nav aria-label="Main Navigation">
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="projects.html">Projects</a></li>
           <li><a href="experiments.html">Experiments</a></li>
-          <li><a href="curated_links.html">Curated Links</a></li>
+          <li><a href="curated_links.html" class="active">Curated Links</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
     </aside>
 
     <!-- Main Content -->
-    <main>
+    <main id="main-content">
       <!-- Main Curated Links Section Title -->
       <section class="section-title">
         <a href="index.html" class="home-icon-link" aria-label="Back to Home">
-          <img src="eddie.png" alt="Home" class="home-icon" />
+          <img src="eddie.png" alt="Eddie's profile" class="home-icon" />
         </a>
         <h2>Curated Links</h2>
       </section>
+
+      <p class="content section-description">
+        A collection of valuable resources I've discovered and found useful. I
+        regularly update this list with new finds across various categories.
+      </p>
 
       <!-- Section: Tutorials -->
       <section class="section-title category-title">
@@ -125,16 +99,31 @@
           and solve crimes by writing SQL queries! SQL Noir is an interactive
           mystery-solving game where you crack cases by writing SQL queries.
         </li>
-        <!-- Add more Posts/Tutorials links here -->
-        <!-- Example:
         <li>
-            <a href="URL" target="_blank" rel="noopener noreferrer" class="curated-link-title">Another Tutorial Title</a> -
-            Description text goes here, flowing right after the link.
+          <a
+            href="https://javascript.info/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="curated-link-title"
+            >The Modern JavaScript Tutorial</a
+          >
+          - From the basics to advanced topics with simple, but detailed
+          explanations. This is one of the most comprehensive JavaScript
+          references I've found with practical examples.
         </li>
-        -->
+        <li>
+          <a
+            href="https://www.youtube.com/c/TheCodingTrain"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="curated-link-title"
+            >The Coding Train</a
+          >
+          - Daniel Shiffman's YouTube channel featuring creative coding
+          tutorials on topics like algorithms, machine learning, visualization,
+          and generative art. His enthusiasm makes complex topics accessible.
+        </li>
       </ul>
-
-      <hr class="section-divider" />
 
       <!-- Section: Tools -->
       <section class="section-title category-title">
@@ -152,10 +141,31 @@
           - Provides tools for processing, analyzing, and visualizing geospatial
           data using advanced ML techniques.
         </li>
-        <!-- Add more Tools/Code links here -->
+        <li>
+          <a
+            href="https://excalidraw.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="curated-link-title"
+            >Excalidraw</a
+          >
+          - A virtual whiteboard for sketching hand-drawn like diagrams. Perfect
+          for creating system architecture diagrams, flowcharts, and mockups
+          with a unique sketched aesthetic.
+        </li>
+        <li>
+          <a
+            href="https://www.figma.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="curated-link-title"
+            >Figma</a
+          >
+          - Collaborative interface design tool that works in the browser. I use
+          this for all my UI/UX design work, particularly for its powerful
+          prototyping and collaboration features.
+        </li>
       </ul>
-
-      <hr class="section-divider" />
 
       <!-- Section: Resources -->
       <section class="section-title category-title">
@@ -172,17 +182,100 @@
           >
           - Online textbook on forecasting for Python.
         </li>
-        <!-- Add more Resources links here -->
+        <li>
+          <a
+            href="https://elitedatascience.com/learn-machine-learning"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="curated-link-title"
+            >The Non-Technical Guide to Machine Learning</a
+          >
+          - An excellent introduction to machine learning concepts explained in
+          plain language without requiring advanced math or statistics
+          knowledge.
+        </li>
+        <li>
+          <a
+            href="https://refactoring.guru/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="curated-link-title"
+            >Refactoring Guru</a
+          >
+          - Comprehensive resource on software design patterns and refactoring
+          techniques with clean illustrations and practical examples across
+          multiple programming languages.
+        </li>
       </ul>
-    </main>
+
+      <!-- Section: Books -->
+      <section class="section-title category-title">
+        <h3>Books</h3>
+      </section>
+      <ul class="curated-list">
+        <li>
+          <a
+            href="https://www.goodreads.com/book/show/44936.Designing_Data_Intensive_Applications"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="curated-link-title"
+            >Designing Data-Intensive Applications</a
+          >
+          - Martin Kleppmann's masterpiece on the architecture of data systems.
+          This book changed how I think about building scalable applications.
+        </li>
+        <li>
+          <a
+            href="https://www.goodreads.com/book/show/3735293-clean-code"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="curated-link-title"
+            >Clean Code</a
+          >
+          - Robert C. Martin's classic on writing code that's easy to
+          understand, refactor, and maintain. Still relevant after all these
+          years.
+        </li>
+      </ul>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>
+        &copy;
+        <script>
+          document.write(new Date().getFullYear());
+        </script>
+        Eddie. All rights reserved.
+      </p>
+    </footer>
+  </main>
 
     <script>
       // Mobile menu toggle functionality
       document
         .querySelector(".menu-toggle")
         .addEventListener("click", function () {
-          document.querySelector(".side-panel").classList.toggle("active");
+          const sidePanel = document.querySelector(".side-panel");
+          sidePanel.classList.toggle("active");
+
+          // Update ARIA attributes
+          const expanded = sidePanel.classList.contains("active");
+          this.setAttribute("aria-expanded", expanded);
         });
+
+      // Add active class to current nav item
+      document.addEventListener("DOMContentLoaded", function () {
+        const currentPage = window.location.pathname.split("/").pop();
+        const navLinks = document.querySelectorAll(".side-panel nav ul li a");
+
+        navLinks.forEach((link) => {
+          const linkPage = link.getAttribute("href");
+          if (linkPage === currentPage) {
+            link.classList.add("active");
+          }
+        });
+      });
     </script>
   </body>
 </html>
