@@ -2,7 +2,7 @@
 This repository contains the source code for my personal website – a digital space where I share projects, experiments, curated links, and thoughts.
 
 ## Live Demo
-You can view the live website here: [https://website-url.com](https://website-url.com)
+You can view the live website here: [https://edisedis777.github.io/eddie-digital/](https://edisedis777.github.io/eddie-digital/)
 
 ## Site Structure
 The website is organized into the following sections, accessible via the side navigation:
