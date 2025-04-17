@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curated Links</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Specific styles for curated links list -->
+    <style>
+      .category-title {
+        margin-top: 2.5rem;
+        margin-bottom: 0;
+        padding-bottom: 0;
+      }
+      .category-title h3 {
+        font-size: 1.75rem;
+        font-weight: 600;
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+      }
+
+      /* Style for the unordered list */
+      .curated-list {
+        list-style: disc; /* Use standard bullets */
+        padding-left: 1.5rem; /* Indent list */
+        margin-top: 1rem;
+        max-width: 800px; /* Match content width */
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* Style for each list item */
+      .curated-list li {
+        margin-bottom: 1.25rem; /* Space between links */
+        line-height: 1.7; /* Improve readability */
+        color: var(--text-color); /* Default text color for description */
+      }
+
+      /* Style for the link title (inline) */
+      .curated-list li a.curated-link-title {
+        font-weight: 600;
+        /* font-size: 1rem; /* Use standard text size */
+        color: var(--accent-color); /* Use accent color for the link */
+        text-decoration: none;
+        /* display: inline; /* Default, but explicit */
+        /* margin-bottom: 0; Removed */
+      }
+      .curated-list li a.curated-link-title:hover {
+        text-decoration: underline; /* Underline on hover */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Mobile Menu Toggle -->
+    <button class="menu-toggle" aria-label="Toggle menu">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M3 12H21"
+          stroke="white"
+          stroke-width="2"
+          stroke-linecap="round" />
+        <path
+          d="M3 6H21"
+          stroke="white"
+          stroke-width="2"
+          stroke-linecap="round" />
+        <path
+          d="M3 18H21"
+          stroke="white"
+          stroke-width="2"
+          stroke-linecap="round" />
+      </svg>
+    </button>
+
+    <!-- Side Panel -->
+    <aside class="side-panel">
+      <h1>
+        <a href="index.html" style="color: inherit; text-decoration: none"
+          >Eddie</a
+        >
+      </h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="experiments.html">Experiments</a></li>
+          <li><a href="curated_links.html">Curated Links</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main>
+      <!-- Main Curated Links Section Title -->
+      <section class="section-title">
+        <a href="index.html" class="home-icon-link" aria-label="Back to Home">
+          <img src="eddie.png" alt="Home" class="home-icon" />
+        </a>
+        <h2>Curated Links</h2>
+      </section>
+
+      <!-- Section: Tutorials -->
+      <section class="section-title category-title">
+        <h3>Tutorials</h3>
+      </section>
+      <ul class="curated-list">
+        <li>
+          <a
+            href="https://sqlnoir.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="curated-link-title"
+            >SQL Noir</a
+          >
+          - Solve mysteries through SQL. Step into the shoes of a real detective
+          and solve crimes by writing SQL queries! SQL Noir is an interactive
+          mystery-solving game where you crack cases by writing SQL queries.
+        </li>
+        <!-- Add more Posts/Tutorials links here -->
+        <!-- Example:
+        <li>
+            <a href="URL" target="_blank" rel="noopener noreferrer" class="curated-link-title">Another Tutorial Title</a> -
+            Description text goes here, flowing right after the link.
+        </li>
+        -->
+      </ul>
+
+      <hr class="section-divider" />
+
+      <!-- Section: Tools -->
+      <section class="section-title category-title">
+        <h3>Tools</h3>
+      </section>
+      <ul class="curated-list">
+        <li>
+          <a
+            href="https://geoai.gishub.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="curated-link-title"
+            >GeoAI: Artificial Intelligence for Geospatial Data</a
+          >
+          - Provides tools for processing, analyzing, and visualizing geospatial
+          data using advanced ML techniques.
+        </li>
+        <!-- Add more Tools/Code links here -->
+      </ul>
+
+      <hr class="section-divider" />
+
+      <!-- Section: Resources -->
+      <section class="section-title category-title">
+        <h3>Resources</h3>
+      </section>
+      <ul class="curated-list">
+        <li>
+          <a
+            href="https://otexts.com/fpppy/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="curated-link-title"
+            >Forecasting: Principles and Practice, the Pythonic Way</a
+          >
+          - Online textbook on forecasting for Python.
+        </li>
+        <!-- Add more Resources links here -->
+      </ul>
+    </main>
+
+    <script>
+      // Mobile menu toggle functionality
+      document
+        .querySelector(".menu-toggle")
+        .addEventListener("click", function () {
+          document.querySelector(".side-panel").classList.toggle("active");
+        });
+    </script>
+  </body>
+</html>

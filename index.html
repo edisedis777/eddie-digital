@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eddie's Digital Space</title>
+    <!-- Updated Title -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .welcome-section h2 {
+        margin-bottom: 1rem;
+      }
+      .section-description {
+        margin-bottom: 1.5rem;
+      }
+      .section-description h3 {
+        margin-bottom: 0.5rem;
+        font-size: 1.3rem;
+        color: var(--primary-color);
+      }
+      .navigation-guide {
+        margin-top: 2rem;
+        font-style: italic;
+        color: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Mobile Menu Toggle -->
+    <button class="menu-toggle" aria-label="Toggle menu">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M3 12H21"
+          stroke="white"
+          stroke-width="2"
+          stroke-linecap="round" />
+        <path
+          d="M3 6H21"
+          stroke="white"
+          stroke-width="2"
+          stroke-linecap="round" />
+        <path
+          d="M3 18H21"
+          stroke="white"
+          stroke-width="2"
+          stroke-linecap="round" />
+      </svg>
+    </button>
+
+    <!-- Side Panel -->
+    <aside class="side-panel">
+      <h1>Eddie</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="experiments.html">Experiments</a></li>
+          <li><a href="curated_links.html">Curated Links</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main>
+      <!-- Welcome Section -->
+      <section class="section-title">
+        <a href="index.html" class="home-icon-link" aria-label="Back to Home">
+          <img src="eddie.png" alt="Home" class="home-icon" />
+        </a>
+        <h2>Welcome!</h2>
+      </section>
+
+      <section class="content" style="border-bottom: none">
+        <p style="font-size: 1.1rem; margin-bottom: 2rem">
+          <!-- Larger intro text -->
+          Hi, I'm Eddie. This is my personal digital space where I share things
+          I'm working on, learning about, and finding interesting. Think of it
+          as a blend of a portfolio, notebook, and personal knowledge base.
+        </p>
+
+        <!-- Section Descriptions -->
+        <div class="section-description">
+          <h3>What You'll Find Here:</h3>
+          <p>This site is organized into a few key areas:</p>
+        </div>
+
+        <div class="section-description">
+          <h3>
+            <a
+              href="projects.html"
+              style="color: var(--accent-color); text-decoration: none"
+              >Projects</a
+            >
+          </h3>
+          <p>
+            Explore my software development and data engineering work. You'll
+            find details on tools I've built, including links to GitHub
+            repositories.
+          </p>
+        </div>
+
+        <div class="section-description">
+          <h3>
+            <a
+              href="experiments.html"
+              style="color: var(--accent-color); text-decoration: none"
+              >Experiments</a
+            >
+          </h3>
+          <p>
+            Beyond code, I enjoy hands-on experimentation. This section
+            documents some of those ventures.
+          </p>
+        </div>
+
+        <div class="section-description">
+          <h3>
+            <a
+              href="curated_links.html"
+              style="color: var(--accent-color); text-decoration: none"
+              >Curated Links</a
+            >
+          </h3>
+          <p>
+            A collection of useful tools, insightful articles, tutorials, and
+            valuable resources.
+          </p>
+        </div>
+
+        <div class="section-description">
+          <h3>
+            <a
+              href="contact.html"
+              style="color: var(--accent-color); text-decoration: none"
+              >Contact</a
+            >
+          </h3>
+          <p>
+            Want to get in touch? Find my social links and email address here.
+          </p>
+        </div>
+
+        <!-- Navigation Guide -->
+        <p class="navigation-guide">
+          Use the navigation panel on the left (or click the menu icon on
+          mobile) to explore the different sections.
+        </p>
+      </section>
+    </main>
+
+    <script>
+      // Mobile menu toggle functionality
+      document
+        .querySelector(".menu-toggle")
+        .addEventListener("click", function () {
+          document.querySelector(".side-panel").classList.toggle("active");
+        });
+    </script>
+  </body>
+</html>

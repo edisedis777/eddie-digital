@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Experiments</title>
+    <!-- Changed Title -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Specific styles for experiment list and images -->
+    <style>
+      /* Style for the unordered list */
+      .experiment-list {
+        list-style: none; /* Remove default bullets */
+        padding-left: 0; /* Remove default padding */
+        margin-top: 1rem;
+        max-width: 800px; /* Match content width */
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* Style for each list item */
+      .experiment-list li {
+        margin-bottom: 2.5rem; /* More space between experiments */
+        padding-bottom: 1.5rem; /* Space before the border */
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08); /* Separator line */
+        line-height: 1.7;
+      }
+      .experiment-list li:last-child {
+        border-bottom: none; /* No border on the last item */
+        margin-bottom: 0;
+      }
+
+      /* Style for the experiment title */
+      .experiment-list li .experiment-title {
+        font-weight: 600;
+        font-size: 1.25rem; /* Slightly larger title */
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+        display: block; /* Make title take its own line */
+      }
+
+      /* Style for the experiment description */
+      .experiment-list li .experiment-description {
+        margin-bottom: 1rem;
+      }
+
+      /* Container for images */
+      .experiment-images {
+        display: flex;
+        flex-wrap: wrap; /* Allow images to wrap on smaller screens */
+        gap: 1rem; /* Space between images */
+        margin-top: 1rem;
+      }
+
+      /* Style for the images */
+      .experiment-images img {
+        width: 120px; /* Adjust size as needed */
+        height: 120px;
+        object-fit: cover; /* Crop images nicely */
+        border-radius: 6px; /* Slightly rounded corners */
+        background-color: #e0e0e0; /* Placeholder background */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Mobile Menu Toggle -->
+    <button class="menu-toggle" aria-label="Toggle menu">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M3 12H21"
+          stroke="white"
+          stroke-width="2"
+          stroke-linecap="round" />
+        <path
+          d="M3 6H21"
+          stroke="white"
+          stroke-width="2"
+          stroke-linecap="round" />
+        <path
+          d="M3 18H21"
+          stroke="white"
+          stroke-width="2"
+          stroke-linecap="round" />
+      </svg>
+    </button>
+
+    <!-- Side Panel -->
+    <aside class="side-panel">
+      <h1>
+        <a href="index.html" style="color: inherit; text-decoration: none"
+          >Eddie</a
+        >
+      </h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="experiments.html">Experiments</a></li>
+          <li><a href="curated_links.html">Curated Links</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main>
+      <!-- Main Experiments Section Title -->
+      <section class="section-title">
+        <a href="index.html" class="home-icon-link" aria-label="Back to Home">
+          <img src="eddie.png" alt="Home" class="home-icon" />
+        </a>
+        <h2>Experiments</h2>
+      </section>
+
+      <!-- List of Experiments -->
+      <ul class="experiment-list">
+        <li>
+          <strong class="experiment-title">Hydroponic Basil Growth</strong>
+          <p class="experiment-description">
+            Comparing growth rates of basil using deep water culture vs. Kratky
+            method. Tracking nutrient levels and light exposure.
+          </p>
+          <div class="experiment-images">
+            <img
+              src="https://placehold.co/120x120/e0e0e0/777?text=Setup+A"
+              alt="Placeholder Image 1 for Hydroponic Basil" />
+            <img
+              src="https://placehold.co/120x120/e0e0e0/777?text=Setup+B"
+              alt="Placeholder Image 2 for Hydroponic Basil" />
+            <img
+              src="https://placehold.co/120x120/e0e0e0/777?text=Results"
+              alt="Placeholder Image 3 for Hydroponic Basil" />
+          </div>
+        </li>
+
+        <li>
+          <strong class="experiment-title"
+            >Sourdough Starter Day/Night Feeding</strong
+          >
+          <p class="experiment-description">
+            Observing the activity differences in a sourdough starter fed
+            consistently in the morning versus one fed in the evening. Measured
+            rise times and pH levels over several cycles.
+          </p>
+          <div class="experiment-images">
+            <img
+              src="https://placehold.co/120x120/d9c6a5/777?text=Morning+Feed"
+              alt="Placeholder Image 1 for Sourdough" />
+            <img
+              src="https://placehold.co/120x120/d9c6a5/777?text=Evening+Feed"
+              alt="Placeholder Image 2 for Sourdough" />
+            <img
+              src="https://placehold.co/120x120/d9c6a5/777?text=Baked+Loaf"
+              alt="Placeholder Image 3 for Sourdough" />
+          </div>
+        </li>
+
+        <li>
+          <strong class="experiment-title">Local Bird Feeder Visitors</strong>
+          <p class="experiment-description">
+            Cataloging bird species visiting a specific feeder over a month
+            (Spring 2024). Noted times of day, preferred seeds (sunflower vs.
+            mixed), and interactions between species.
+          </p>
+          <div class="experiment-images">
+            <img
+              src="https://placehold.co/120x120/a8dadc/777?text=Feeder+Setup"
+              alt="Placeholder Image 1 for Bird Feeder" />
+            <img
+              src="https://placehold.co/120x120/a8dadc/777?text=Finch+Visit"
+              alt="Placeholder Image 2 for Bird Feeder" />
+            <img
+              src="https://placehold.co/120x120/a8dadc/777?text=Chart"
+              alt="Placeholder Image 3 for Bird Feeder" />
+          </div>
+        </li>
+
+        <!-- Add more experiments here following the same li structure -->
+        <!-- Example:
+        <li>
+            <strong class="experiment-title">Kombucha Second Fermentation Flavors</strong>
+            <p class="experiment-description">
+                Testing various fruit combinations (ginger-lemon, raspberry-mint, blueberry-basil) for second fermentation of kombucha. Rated flavor intensity and carbonation level after 3 days.
+            </p>
+            <div class="experiment-images">
+                <img src="https://placehold.co/120x120/f4a261/777?text=Bottling" alt="Placeholder Image 1">
+                <img src="https://placehold.co/120x120/f4a261/777?text=Raspberry" alt="Placeholder Image 2">
+                <img src="https://placehold.co/120x120/f4a261/777?text=Pouring" alt="Placeholder Image 3">
+            </div>
+        </li>
+        -->
+      </ul>
+    </main>
+
+    <script>
+      // Mobile menu toggle functionality
+      document
+        .querySelector(".menu-toggle")
+        .addEventListener("click", function () {
+          document.querySelector(".side-panel").classList.toggle("active");
+        });
+    </script>
+  </body>
+</html>

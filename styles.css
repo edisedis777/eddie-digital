@@ -1,0 +1,396 @@
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #212529;
+  --background-color: #c8c8c8;
+  --accent-color: #000000; /* Updated Accessible Dark Blue */
+  --text-color: #333;
+  --hover-color: #4caf50; /* Green hover background */
+  --sidebar-width: 250px;
+  --transition-speed: 0.3s;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Side Panel */
+.side-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--sidebar-width);
+  height: 100%;
+  background-color: var(--background-color);
+  padding: 2rem 1.5rem;
+  transition: transform var(--transition-speed) ease;
+  z-index: 1000;
+}
+
+/* Removed standalone .side-panel h1 rule as styles moved to .site-title-link h1 */
+
+.side-panel nav ul {
+  list-style: none;
+}
+
+.side-panel ul li {
+  margin-bottom: 0.75rem;
+}
+
+.side-panel ul li a {
+  display: block;
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+  border: 2px solid black;
+  border-radius: 10px;
+  border-style: solid;
+  transition: all var(--transition-speed) ease;
+}
+
+.side-panel ul li a:hover {
+  background-color: var(--hover-color); /* Green Background */
+  color: white; /* White text for contrast - WCAG AA Pass */
+  transform: translateX(5px);
+}
+
+/* Main Content Area */
+main {
+  margin-left: var(--sidebar-width);
+  width: calc(100% - var(--sidebar-width));
+  padding: 2rem;
+  max-width: 1200px; /* Max width for main content container */
+}
+
+/* Section Title Styles (Used for main page title and category headers) */
+/* Modified to handle header icon */
+.section-title {
+  display: flex; /* Make it a flex container */
+  align-items: center; /* Vertically align icon and title */
+  gap: 0.75rem; /* Space between icon and title */
+  padding: 1rem 0;
+  max-width: 800px; /* Max width for title/content blocks */
+  margin: 0 auto; /* Center title/content blocks */
+}
+
+/* Page Header Home Icon Link */
+.home-icon-link {
+  display: inline-block;
+  flex-shrink: 0;
+  line-height: 0; /* Helps prevent extra space around the image */
+}
+
+/* Page Header Home Icon Image */
+.home-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Main Page Title Heading (H2) */
+.section-title h2 {
+  margin: 0; /* Reset margin for flex alignment */
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+/* --- Category Title Sections (e.g., on Projects, Curated Links pages) --- */
+.category-title {
+  /* Reset flex display if applied via .section-title, if needed */
+  display: block;
+  /* Add spacing specific to category titles */
+  margin-top: 2.5rem;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* Category Title Heading (H3) */
+.category-title h3 {
+  /* Ensure consistent spacing and style */
+  margin-bottom: 0.5rem;
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+/* Section Divider */
+.section-divider {
+  max-width: 800px;
+  margin: 2rem auto;
+  border: 0;
+  height: 1px; /* Thinner divider */
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+/* General Content Sections (Used on Index page originally) */
+.content {
+  /* Removed padding: 2.5rem 0; as individual lists/sections handle spacing */
+  max-width: 800px;
+  margin: 0 auto;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  padding-bottom: 1.5rem; /* Add padding below content block */
+  margin-bottom: 1.5rem; /* Add margin below content block */
+}
+.content:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+/* Keep these for potential future use or simple content sections */
+.content h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+.content p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-color);
+}
+
+/* --- Homepage Specific Styles --- */
+.welcome-section h2 {
+  margin-bottom: 1.5rem;
+}
+.section-description {
+  margin-bottom: 1.5rem;
+}
+.section-description h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+  color: var(--primary-color);
+}
+.section-description h3 a {
+  /* Style the linked H3s */
+  color: var(--accent-color);
+  text-decoration: none;
+}
+.section-description h3 a:hover {
+  text-decoration: underline;
+}
+.navigation-guide {
+  margin-top: 2rem;
+  font-style: italic;
+  color: #555;
+}
+
+/* --- Projects Page List Styles --- */
+.project-list {
+  list-style: decimal; /* Use numbers */
+  padding-left: 1.5rem;
+  margin-top: 1rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.project-list li {
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+}
+.project-list li a.project-title-link {
+  font-weight: 600;
+  color: inherit;
+  text-decoration: none;
+}
+.project-list li a.project-title-link:hover {
+  text-decoration: underline;
+}
+/* Style for the inline Live Demo link (also used in projects) */
+.live-demo-link {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  color: var(--accent-color);
+  font-size: 0.95rem;
+  vertical-align: middle;
+}
+.live-demo-link:hover {
+  text-decoration: underline;
+}
+.live-demo-link svg {
+  width: 1em;
+  height: 1em;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+/* --- Experiments Page List Styles --- */
+.experiment-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 1rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.experiment-list li {
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  line-height: 1.7;
+}
+.experiment-list li:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+.experiment-list li .experiment-title {
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+.experiment-list li .experiment-description {
+  margin-bottom: 1rem;
+}
+.experiment-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.experiment-images img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 6px;
+  background-color: #e0e0e0; /* Placeholder background */
+}
+
+/* --- Curated Links Page List Styles --- */
+.curated-list {
+  list-style: disc; /* Use standard bullets */
+  padding-left: 1.5rem; /* Indent list */
+  margin-top: 1rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.curated-list li {
+  margin-bottom: 1.25rem;
+  line-height: 1.7;
+  color: var(--text-color);
+}
+.curated-list li a.curated-link-title {
+  font-weight: 600;
+  color: var(--accent-color);
+  text-decoration: none;
+}
+.curated-list li a.curated-link-title:hover {
+  text-decoration: underline;
+}
+
+/* --- Mobile Menu Toggle --- */
+.menu-toggle {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1001; /* Above sidebar */
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+/* --- Media Queries --- */
+@media (max-width: 1024px) {
+  :root {
+    --sidebar-width: 220px; /* Slightly smaller sidebar */
+  }
+  main {
+    width: calc(100% - var(--sidebar-width));
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    flex-direction: column; /* Stack elements */
+  }
+
+  .menu-toggle {
+    display: block; /* Show toggle button */
+  }
+
+  .side-panel {
+    transform: translateX(-100%); /* Hide sidebar off-screen */
+    width: 280px; /* Consistent width for mobile menu */
+  }
+
+  .side-panel.active {
+    transform: translateX(0); /* Slide sidebar in */
+  }
+
+  main {
+    margin-left: 0; /* Main content takes full width */
+    width: 100%;
+    padding: 1rem; /* Reduce padding */
+  }
+
+  /* Adjust content widths for smaller screens if needed */
+  .section-title,
+  .content,
+  .project-list,
+  .experiment-list,
+  .curated-list {
+    max-width: 100%; /* Allow content to use more width */
+    padding-left: 0.5rem; /* Adjust list padding */
+    padding-right: 0.5rem;
+  }
+  /* Adjust list indentation on mobile */
+  .project-list,
+  .curated-list {
+    padding-left: 1.75rem; /* Ensure bullet/number is visible */
+  }
+  .experiment-list {
+    padding-left: 0.5rem; /* No bullets to worry about */
+  }
+}
+
+@media (max-width: 480px) {
+  /* Further adjustments for very small screens */
+  .section-title h2 {
+    font-size: 1.5rem;
+  }
+  .category-title h3 {
+    font-size: 1.3rem;
+  }
+  .content h3 {
+    /* Keep for potential use */
+    font-size: 1.25rem;
+  }
+  .content p,
+  .project-list li,
+  .experiment-list li,
+  .curated-list li {
+    font-size: 0.95rem; /* Slightly smaller text */
+  }
+  .experiment-images img {
+    width: 90px; /* Smaller images */
+    height: 90px;
+  }
+  main {
+    padding: 1rem 0.75rem; /* More horizontal padding adjustment */
+  }
+}
