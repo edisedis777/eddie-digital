@@ -3,78 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Projects</title>
+    <meta
+      name="description"
+      content="Explore Eddie's software development and data engineering projects, including GitHub repositories and live demos." />
+    <title>Eddie's Digital Space | Projects</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
-    <!-- Specific styles for project lists and links -->
-    <style>
-      .category-title {
-        margin-top: 2.5rem;
-        margin-bottom: 0;
-        padding-bottom: 0;
-      }
-      .category-title h3 {
-        font-size: 1.75rem;
-        font-weight: 600;
-        color: var(--primary-color);
-        margin-bottom: 0.5rem;
-      }
-
-      /* Style for the ordered list */
-      .project-list {
-        padding-left: 1.5rem; /* Standard list indentation */
-        margin-top: 1rem;
-        max-width: 800px; /* Match content width */
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      /* Style for each list item */
-      .project-list li {
-        margin-bottom: 1.5rem; /* Space between projects */
-        line-height: 1.7; /* Improve readability of description */
-      }
-
-      /* Style for the project title link (GitHub) */
-      .project-list li a.project-title-link {
-        font-weight: 600;
-        color: inherit; /* Use default text color */
-        text-decoration: none;
-      }
-      .project-list li a.project-title-link:hover {
-        text-decoration: underline; /* Underline on hover */
-      }
-
-      /* Style for the inline Live Demo link */
-      .live-demo-link {
-        text-decoration: none;
-        /* margin-left: 0.5em; /* Add space before the link */
-        display: inline-flex; /* Keep icon and text together */
-        align-items: center;
-        gap: 0.35em;
-        color: var(--accent-color);
-        font-size: 0.95rem; /* Slightly smaller like before */
-        vertical-align: middle; /* Align nicely with text */
-      }
-      .live-demo-link:hover {
-        text-decoration: underline;
-      }
-      .live-demo-link svg {
-        width: 1em; /* Size relative to font size */
-        height: 1em;
-        stroke: currentColor;
-        stroke-width: 2;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        fill: none;
-         /* Optional: Adjust vertical alignment slightly if needed */
-        /* vertical-align: -0.1em; */
-      }
-    </style>
+    <link rel="icon" type="image/png" href="eddie.png" />
   </head>
   <body>
+    <!-- Skip Navigation for Accessibility -->
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
     <!-- Mobile Menu Toggle -->
     <button class="menu-toggle" aria-label="Toggle menu">
       <svg
@@ -103,27 +45,28 @@
 
     <!-- Side Panel -->
     <aside class="side-panel">
-      <h1><a href="index.html" style="color: inherit; text-decoration: none"
-        >Eddie</a
-      ></h1>
-      <nav>
-        <nav>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="experiments.html">Experiments</a></li>
-            <li><a href="curated_links.html">Curated Links</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
+      <h1>
+        <a href="index.html" style="color: inherit; text-decoration: none"
+          >Eddie</a
+        >
+      </h1>
+      <nav aria-label="Main Navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html" class="active">Projects</a></li>
+          <li><a href="experiments.html">Experiments</a></li>
+          <li><a href="curated_links.html">Curated Links</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
       </nav>
     </aside>
 
     <!-- Main Content -->
-    <main>
+    <main id="main-content">
       <!-- Main Projects Section Title -->
       <section class="section-title">
         <a href="index.html" class="home-icon-link" aria-label="Back to Home">
-          <img src="eddie.png" alt="Home" class="home-icon">
+          <img src="eddie.png" alt="Eddie's profile" class="home-icon" />
         </a>
         <h2>Projects</h2>
       </section>
@@ -157,10 +100,19 @@
           to Git, featuring parallel processing, progress tracking, and smart
           file handling.
         </li>
-        <!-- Add more data engineering projects here -->
+        <li>
+          <a
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="project-title-link"
+            >Data Validation Framework</a
+          >: A Python framework for validating data quality across various
+          sources, with configurable rule sets and reporting capabilities.
+        </li>
       </ol>
 
-      <hr class="section-divider" />
+ 
 
       <!-- Category: Web Development -->
       <section class="section-title category-title">
@@ -175,8 +127,7 @@
             class="project-title-link"
             >I-Ching-Sphere</a
           >: An interactive 3D visualization of the I Ching hexagrams arranged
-          in a spherical formation. 
-          <!-- Added non-breaking space -->
+          in a spherical formation.
           <a
             href="https://edisedis777.github.io/I-Ching-Sphere/"
             target="_blank"
@@ -195,23 +146,75 @@
             Live Demo
           </a>
         </li>
-        <!-- Add more web development projects here -->
-        <!-- Example with inline Demo Link:
-          <li>
-            <a href="GITHUB_URL" target="_blank" rel="noopener noreferrer" class="project-title-link">Another Web Project</a>:
-            Description of the project. 
-            <a href="DEMO_URL" target="_blank" rel="noopener noreferrer" class="live-demo-link">
-                <svg>...</svg> Live Demo
-            </a>
-          </li>
-          -->
-        <!-- Example without Demo Link:
-          <li>
-            <a href="GITHUB_URL" target="_blank" rel="noopener noreferrer" class="project-title-link">Yet Another Web Project</a>:
-            Description of the project.
-          </li>
-          -->
+        <li>
+          <a
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="project-title-link"
+            >Interactive Dashboard Template</a
+          >: A responsive web dashboard template built with Tailwind CSS and
+          Alpine.js, featuring customizable widgets and dark/light mode.
+          <a
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="live-demo-link">
+            <svg
+              role="img"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+              <title>Live Demo</title>
+              <path
+                d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+            Live Demo
+          </a>
+        </li>
       </ol>
+
+
+      <!-- Category: Machine Learning -->
+      <section class="section-title category-title">
+        <h3>Machine Learning</h3>
+      </section>
+      <ol class="project-list">
+        <li>
+          <a
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="project-title-link"
+            >Time Series Forecasting Toolkit</a
+          >: A collection of algorithms and evaluation tools for time series
+          forecasting, implemented in Python using scikit-learn and Prophet.
+        </li>
+        <li>
+          <a
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="project-title-link"
+            >Image Classification Pipeline</a
+          >: An end-to-end pipeline for training and deploying image
+          classification models, with support for transfer learning and model
+          optimization.
+        </li>
+      </ol>
+    </section>
+
+      <!-- Footer -->
+      <footer>
+        <p>
+          &copy;
+          <script>
+            document.write(new Date().getFullYear());
+          </script>
+          Eddie. All rights reserved.
+        </p>
+      </footer>
     </main>
 
     <script>
@@ -221,6 +224,21 @@
         .addEventListener("click", function () {
           document.querySelector(".side-panel").classList.toggle("active");
         });
+
+      // Close mobile menu when clicking outside
+      document.addEventListener("click", function (event) {
+        const sidePanel = document.querySelector(".side-panel");
+        const menuToggle = document.querySelector(".menu-toggle");
+
+        if (
+          window.innerWidth <= 768 &&
+          !sidePanel.contains(event.target) &&
+          !menuToggle.contains(event.target) &&
+          sidePanel.classList.contains("active")
+        ) {
+          sidePanel.classList.remove("active");
+        }
+      });
     </script>
   </body>
 </html>
