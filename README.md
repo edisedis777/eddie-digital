@@ -43,4 +43,4 @@ To view or modify the site locally:
 This is a personal project, but feel free to open an issue if you spot any bugs or have suggestions.
 
 ## License
-Code licensed under the MIT License.
+Distributed under the GNU Affero General Public License v3.0 License. See `LICENSE` for more information.
